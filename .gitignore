@@ -1,0 +1,16 @@
+# Go build artifacts
+*.exe
+*.test
+*.prof
+*.out
+/vendor/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets / env (never commit)
+.env
+.env.local
