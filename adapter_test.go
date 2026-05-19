@@ -45,8 +45,18 @@ func TestUnconfiguredAdapterDefersErrors(t *testing.T) {
 	if _, err := a.Sign(context.Background(), "k", 1); err == nil {
 		t.Fatal("Sign: want error, got nil")
 	}
-	if _, err := a.ListPrefix(context.Background(), "p/"); err == nil {
-		t.Fatal("ListPrefix: want error, got nil")
+	// ListPrefix is now a streaming iter.Seq2 (storage.Provider).
+	// Drain a single step to confirm the propagated init error
+	// surfaces on the iterator boundary.
+	gotErr := false
+	for _, err := range a.ListPrefix(context.Background(), "bucket", "p/") {
+		if err != nil {
+			gotErr = true
+			break
+		}
+	}
+	if !gotErr {
+		t.Fatal("ListPrefix: want propagated init error, got none")
 	}
 }
 

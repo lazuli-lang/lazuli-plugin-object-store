@@ -163,31 +163,11 @@ func (a *Adapter) Sign(ctx context.Context, key storage.Key, ttl time.Duration) 
 	return req.URL, nil
 }
 
-// ListPrefix is not part of storage.ObjectStore today; ships now so
-// the Firebase Storage migrator can enumerate source objects. The §3.5
-// roadmap (storage.Provider) folds it into the contract.
-func (a *Adapter) ListPrefix(ctx context.Context, prefix string) ([]string, error) {
-	if a.err != nil {
-		return nil, a.err
-	}
-	var keys []string
-	pager := s3.NewListObjectsV2Paginator(a.client, &s3.ListObjectsV2Input{
-		Bucket: aws.String(a.cfg.Bucket),
-		Prefix: aws.String(prefix),
-	})
-	for pager.HasMorePages() {
-		page, err := pager.NextPage(ctx)
-		if err != nil {
-			return nil, mapErr(err)
-		}
-		for _, obj := range page.Contents {
-			if obj.Key != nil {
-				keys = append(keys, *obj.Key)
-			}
-		}
-	}
-	return keys, nil
-}
+// ListPrefix lives in provider.go (storage.Provider implementation).
+// The legacy single-arg shape (`func (a *Adapter) ListPrefix(ctx, prefix)`)
+// was retired alongside the storage.Provider contract landing per
+// docs/proposals/hostpoint-complete-roadmap-2026-05-18.md §3.5. The
+// Firebase Storage migrator now consumes the iter.Seq2 form.
 
 func mapErr(err error) error {
 	if err == nil {
