@@ -26,7 +26,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sso v1.30.4 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.35.8 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.41.1 // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/go-ini/ini v1.67.0 // indirect
 	github.com/goccy/go-json v0.10.3 // indirect
@@ -38,15 +38,17 @@ require (
 	github.com/jackc/puddle/v2 v2.2.2 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.8 // indirect
+	github.com/kr/pretty v0.3.1 // indirect
 	github.com/minio/md5-simd v1.1.2 // indirect
 	github.com/minio/minio-go/v7 v7.0.79 // indirect
-	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/richardlehane/mscfb v1.0.6 // indirect
 	github.com/richardlehane/msoleps v1.0.6 // indirect
 	github.com/riverqueue/river v0.37.0 // indirect
 	github.com/riverqueue/river/riverdriver v0.37.0 // indirect
 	github.com/riverqueue/river/rivershared v0.37.0 // indirect
 	github.com/riverqueue/river/rivertype v0.37.0 // indirect
+	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/rs/xid v1.6.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
@@ -68,4 +70,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace lazuli.dev/runtime => c:/Users/lucas/lazuli/runtime/go
+replace lazuli.dev/runtime => C:/Users/lucas/lazuli/runtime/go
