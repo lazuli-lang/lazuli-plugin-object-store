@@ -1,0 +1,18 @@
+# Minimal pilot for @plugin/object-store. Demonstrates the binding shape;
+# pair with the env vars listed in this plugin's manifest.toml.
+
+registry
+  env
+    group object_store
+      server S3_BUCKET_DEFAULT: Text required in production, stage
+      # Optional: S3_ENDPOINT, S3_REGION, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, S3_FORCE_PATH_STYLE
+
+  capabilities
+    object_storage media
+
+  bindings
+    object_store: ObjectStore
+      adapter @plugin/object-store
+      bucket env.S3_BUCKET_DEFAULT
+      endpoint env.S3_ENDPOINT
+      auth keys env.S3_ACCESS_KEY_ID env.S3_SECRET_ACCESS_KEY
